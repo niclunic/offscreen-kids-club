@@ -3,6 +3,12 @@ v3Styles.rel = "stylesheet";
 v3Styles.href = "v3.css";
 document.head.appendChild(v3Styles);
 
+const stickyCta = document.createElement("a");
+stickyCta.href = "#join";
+stickyCta.className = "mobile-sticky-cta";
+stickyCta.textContent = "Join the Prague waitlist";
+document.body.appendChild(stickyCta);
+
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 
