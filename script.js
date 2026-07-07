@@ -1,3 +1,8 @@
+const v3Styles = document.createElement("link");
+v3Styles.rel = "stylesheet";
+v3Styles.href = "v3.css";
+document.head.appendChild(v3Styles);
+
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 
@@ -23,6 +28,8 @@ form?.addEventListener("submit", () => {
     email: formData.get("email"),
     childAge: formData.get("childAge"),
     interest: formData.get("interest"),
+    captainMaxCapacity: formData.get("captainMaxCapacity"),
+    requiredGear: formData.get("requiredGear"),
     message: formData.get("message"),
     createdAt: new Date().toISOString()
   };
