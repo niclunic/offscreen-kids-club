@@ -3,6 +3,11 @@ v3Styles.rel = "stylesheet";
 v3Styles.href = "v3.css";
 document.head.appendChild(v3Styles);
 
+const mobileStyles = document.createElement("link");
+mobileStyles.rel = "stylesheet";
+mobileStyles.href = "mobile-focus.css";
+document.head.appendChild(mobileStyles);
+
 const stickyCta = document.createElement("a");
 stickyCta.href = "#join";
 stickyCta.className = "mobile-sticky-cta";
