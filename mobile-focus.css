@@ -1,0 +1,246 @@
+/* Mobile-first compression layer for Facebook traffic */
+
+@media (max-width: 680px) {
+  body {
+    padding-bottom: 82px;
+  }
+
+  .site-header {
+    position: sticky;
+    min-height: 64px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 1.4rem;
+  }
+
+  h1 {
+    font-size: clamp(3.45rem, 17vw, 5.2rem);
+    line-height: 0.86;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text {
+    font-size: 1.05rem;
+    line-height: 1.45;
+  }
+
+  .hero-actions {
+    margin: 1.25rem 0 1rem;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .trust-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.45rem;
+  }
+
+  .trust-row span {
+    text-align: center;
+    font-size: 0.76rem;
+    padding: 0.48rem 0.52rem;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .ticker {
+    margin-top: 0.5rem;
+  }
+
+  .section {
+    padding-top: 2.8rem;
+    padding-bottom: 2.8rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 11vw, 3rem);
+    line-height: 0.95;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.08rem;
+  }
+
+  .intro {
+    padding-top: 2.6rem;
+    padding-bottom: 2.6rem;
+  }
+
+  .intro p,
+  .membership-copy p,
+  .join-copy p,
+  .host-callout p,
+  .example-copy p,
+  .gear-copy p,
+  .section-subcopy {
+    font-size: 0.98rem;
+    line-height: 1.48;
+  }
+
+  .participation .steps,
+  #drops .drop-grid,
+  #how .steps,
+  .captain-model .steps {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 82%;
+    grid-template-columns: none;
+    overflow-x: auto;
+    gap: 0.8rem;
+    padding-bottom: 0.75rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .participation .step,
+  #how .step,
+  .captain-model .step,
+  #drops .drop-card {
+    scroll-snap-align: start;
+  }
+
+  .step {
+    min-height: 190px;
+    padding: 1rem;
+  }
+
+  .step span {
+    margin-bottom: 2.2rem;
+  }
+
+  #drops .drop-card {
+    min-height: 330px;
+  }
+
+  #drops .drop-card.featured {
+    grid-column: auto;
+  }
+
+  #drops .drop-image {
+    min-height: 120px;
+  }
+
+  #drops .drop-content {
+    padding: 1rem;
+  }
+
+  .example-section {
+    gap: 1rem;
+  }
+
+  .example-card {
+    padding: 1.05rem;
+    border-radius: 26px;
+  }
+
+  .drop-details {
+    gap: 0.52rem;
+  }
+
+  .drop-details div {
+    padding-bottom: 0.52rem;
+  }
+
+  .safety-grid,
+  .age-grid,
+  .faq-grid {
+    gap: 0.7rem;
+  }
+
+  .safety-card,
+  .age-grid article,
+  .faq-grid details {
+    padding: 0.95rem;
+    border-radius: 22px;
+  }
+
+  .age-section .section-heading,
+  .gear-section .gear-copy {
+    margin-bottom: 0.75rem;
+  }
+
+  .age-grid article p,
+  .safety-card p,
+  .faq-grid p,
+  .gear-list span,
+  .drop-content p,
+  .step p {
+    font-size: 0.92rem;
+    line-height: 1.42;
+  }
+
+  .gear-section {
+    gap: 1rem;
+  }
+
+  .gear-list div {
+    padding: 0.82rem 0.9rem;
+  }
+
+  .membership {
+    gap: 1.25rem;
+  }
+
+  .pricing-card {
+    padding: 1.05rem;
+    border-radius: 26px;
+  }
+
+  .pricing-card h3 {
+    font-size: 2.6rem;
+  }
+
+  .host-callout {
+    margin-inline: 0.75rem;
+    padding: 1.25rem;
+    border-radius: 28px;
+  }
+
+  .faq-grid details:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) {
+    display: none;
+  }
+
+  .waitlist-form {
+    padding: 0.85rem;
+    border-radius: 24px;
+    gap: 0.78rem;
+  }
+
+  .form-section-title {
+    padding: 0.7rem 0.82rem;
+    font-size: 0.9rem;
+  }
+
+  label {
+    font-size: 0.82rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 0.85rem 0.9rem;
+    border-radius: 15px;
+    font-size: 16px;
+  }
+
+  .mobile-sticky-cta {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    min-height: 54px;
+  }
+}
