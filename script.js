@@ -14,6 +14,105 @@ stickyCta.className = "mobile-sticky-cta";
 stickyCta.textContent = "Join the Prague waitlist";
 document.body.appendChild(stickyCta);
 
+const applyInclusivePositioning = () => {
+  document.title = "Offscreen Kids Club | Prague Founding Chapter";
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute(
+      "content",
+      "A parent-present real-world activity club for mums, dads, guardians and kids in Prague. Small offline drops, clear gear, small groups and more first times."
+    );
+  }
+
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  if (ogDescription) {
+    ogDescription.setAttribute(
+      "content",
+      "Less screen time. More first times. Parent-present offline drops for mums, dads, guardians and kids in Prague."
+    );
+  }
+
+  const replaceExactText = (from, to) => {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      if (node.nodeValue.includes(from)) {
+        node.nodeValue = node.nodeValue.replaceAll(from, to);
+      }
+    });
+  };
+
+  replaceExactText(
+    "A parent-present activity club for kids and families who want better weekends:",
+    "A parent-present activity club for mums, dads, guardians and families who want better weekends:"
+  );
+
+  replaceExactText(
+    "Started with dads. Open to parents. Built for kids.",
+    "Started with dads. Open to mums, parents and guardians. Built for sons, daughters and every kid who needs more real-world confidence."
+  );
+
+  replaceExactText(
+    "Book one activity when spots are available. No membership needed to test the vibe.",
+    "Book one activity when spots are available. Mums, dads and guardians can test the vibe without becoming members."
+  );
+
+  replaceExactText(
+    "Host an approved skill, earn OKC credits and help shape the first Prague chapter.",
+    "Host an approved skill, earn OKC credits and help shape the first Prague chapter. Mums, dads and guardians can host."
+  );
+
+  replaceExactText(
+    "Football mornings with small-sided games, parents involved, zero pressure.",
+    "Football mornings with small-sided games, girls and boys welcome, parents involved, zero pressure."
+  );
+
+  replaceExactText(
+    "Offscreen Kids Club is designed to feel easy for parents and reliable for kids:",
+    "Offscreen Kids Club is designed to feel easy for mums, dads and guardians, and reliable for kids:"
+  );
+
+  replaceExactText(
+    "Families can book selected drops one by one. Founding Parents get priority access,",
+    "Families can book selected drops one by one. Founding Parents means mums, dads and guardians get priority access,"
+  );
+
+  replaceExactText(
+    "Captain Parents host small, approved drops around skills they love.",
+    "Captain Parents are mums, dads or guardians who host small, approved drops around skills they love."
+  );
+
+  replaceExactText(
+    "Can mothers, single parents or divorced parents join?",
+    "Can mums, single parents, divorced parents or guardians join?"
+  );
+
+  replaceExactText(
+    "Yes. The club is open to parents and guardians. The goal is better real-world memories with kids.",
+    "Yes. The club is open to mums, dads, single parents, divorced parents and guardians. The goal is better real-world memories with sons and daughters."
+  );
+
+  replaceExactText(
+    "The host questions are optional",
+    "The Captain Parent questions are optional"
+  );
+
+  document.querySelectorAll("option").forEach((option) => {
+    if (option.textContent.trim() === "I can be a Captain Parent") {
+      option.textContent = "I can host a drop as a Captain Parent";
+    }
+  });
+
+  const messageTextarea = document.querySelector('textarea[name="message"]');
+  if (messageTextarea) {
+    messageTextarea.placeholder = "Example: I can host music, crafts, beginner rollers, football, cooking, hiking or photography. Max 5 kids. Required gear: helmets + rollers.";
+  }
+};
+
+applyInclusivePositioning();
+
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
 
