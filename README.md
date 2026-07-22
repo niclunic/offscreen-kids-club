@@ -9,8 +9,9 @@ Offscreen Kids Club is a parent-present offline activity club for mums, dads, gu
 - No monthly subscription at launch
 - Families join the founding waitlist for free
 - Every Drop is booked and paid separately
-- Founding standard Drops are expected to start from 490 CZK per family
-- Every Drop shows price, date, age, capacity, level, gear and cancellation terms before booking
+- Founding standard Drops are expected to start from 490 CZK per participating child
+- One attending parent or guardian is included
+- Every Drop shows price, date, age, capacity, level, gear, sibling rules and cancellation terms before booking
 - Captain Parents can host approved Drops and earn OKC credits
 - The product is parent-present and is not childcare
 
@@ -28,6 +29,7 @@ Build a repeatable operating system for offline childhood:
 ## Operating documents
 
 - [Strategic decision log](docs/DECISION_LOG.md)
+- [Authoritative pricing standard](docs/PRICING_STANDARD.md)
 - [Business and 12-month plan](docs/BUSINESS_AND_ROADMAP.md)
 - [Captain Parent operating system](docs/CAPTAIN_PARENT_SYSTEM.md)
 - [Launch scorecard and metrics](docs/LAUNCH_SCORECARD.md)
