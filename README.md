@@ -27,6 +27,7 @@ Build a repeatable operating system for offline childhood:
 
 ## Operating documents
 
+- [Strategic decision log](docs/DECISION_LOG.md)
 - [Business and 12-month plan](docs/BUSINESS_AND_ROADMAP.md)
 - [Captain Parent operating system](docs/CAPTAIN_PARENT_SYSTEM.md)
 - [Launch scorecard and metrics](docs/LAUNCH_SCORECARD.md)
