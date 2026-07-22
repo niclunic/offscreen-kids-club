@@ -14,6 +14,21 @@ stickyCta.className = "mobile-sticky-cta";
 stickyCta.textContent = "Join the Prague waitlist";
 document.body.appendChild(stickyCta);
 
+const replaceExactText = (from, to) => {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+
+  while (walker.nextNode()) {
+    nodes.push(walker.currentNode);
+  }
+
+  nodes.forEach((node) => {
+    if (node.nodeValue.includes(from)) {
+      node.nodeValue = node.nodeValue.replaceAll(from, to);
+    }
+  });
+};
+
 const applyInclusivePositioning = () => {
   document.title = "Offscreen Kids Club | Prague Founding Chapter";
 
@@ -33,17 +48,6 @@ const applyInclusivePositioning = () => {
     );
   }
 
-  const replaceExactText = (from, to) => {
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-    nodes.forEach((node) => {
-      if (node.nodeValue.includes(from)) {
-        node.nodeValue = node.nodeValue.replaceAll(from, to);
-      }
-    });
-  };
-
   replaceExactText(
     "A parent-present activity club for kids and families who want better weekends:",
     "A parent-present activity club for mums, dads, guardians and families who want better weekends:"
@@ -56,7 +60,7 @@ const applyInclusivePositioning = () => {
 
   replaceExactText(
     "Book one activity when spots are available. No membership needed to test the vibe.",
-    "Book one activity when spots are available. Mums, dads and guardians can test the vibe without becoming members."
+    "Book one activity when spots are available. Mums, dads and guardians can test the vibe without a subscription."
   );
 
   replaceExactText(
@@ -72,11 +76,6 @@ const applyInclusivePositioning = () => {
   replaceExactText(
     "Offscreen Kids Club is designed to feel easy for parents and reliable for kids:",
     "Offscreen Kids Club is designed to feel easy for mums, dads and guardians, and reliable for kids:"
-  );
-
-  replaceExactText(
-    "Families can book selected drops one by one. Founding Parents get priority access,",
-    "Families can book selected drops one by one. Founding Parents means mums, dads and guardians get priority access,"
   );
 
   replaceExactText(
@@ -111,7 +110,91 @@ const applyInclusivePositioning = () => {
   }
 };
 
+const applyDropOnlyLaunchModel = () => {
+  const participationSection = document.querySelector(".participation");
+
+  if (participationSection) {
+    const eyebrow = participationSection.querySelector(".eyebrow");
+    const heading = participationSection.querySelector("h2");
+    const cards = participationSection.querySelectorAll(".step");
+
+    if (eyebrow) eyebrow.textContent = "Three ways to take part";
+    if (heading) heading.textContent = "Choose a drop, join the founding list, or host a skill.";
+
+    if (cards[0]) {
+      cards[0].querySelector("h3").textContent = "Book a Drop";
+      cards[0].querySelector("p").textContent = "Choose the activity that fits your child. Each drop shows its exact price, age, capacity, gear and level before you book.";
+    }
+
+    if (cards[1]) {
+      cards[1].querySelector("h3").textContent = "Join the Founding List";
+      cards[1].querySelector("p").textContent = "Joining is free. Get early access to the first Prague drops and decide separately which ones your family wants to book.";
+    }
+
+    if (cards[2]) {
+      cards[2].querySelector("h3").textContent = "Become a Captain Parent";
+      cards[2].querySelector("p").textContent = "Host an approved skill, earn OKC credits and help build the Prague chapter. Mums, dads and guardians can host.";
+    }
+  }
+
+  const pricingSection = document.querySelector(".membership");
+
+  if (pricingSection) {
+    pricingSection.innerHTML = `
+      <div class="membership-copy">
+        <p class="eyebrow">Simple launch model</p>
+        <h2>Choose a drop. Pay only for that drop.</h2>
+        <p>
+          There is no monthly subscription at launch. Every drop has its own date, price,
+          age range, capacity, required gear and cancellation terms. Join the founding
+          waitlist for free, then book only the experiences that make sense for your family.
+        </p>
+      </div>
+
+      <div class="pricing-card">
+        <p class="plan">Founding Drop Access</p>
+        <h3>From 490 CZK <span>/ family</span></h3>
+        <p class="plan-text">The exact price is always shown before booking.</p>
+        <ul>
+          <li>No subscription or recurring charge</li>
+          <li>Pay only for the drops you choose</li>
+          <li>Small, age-aware groups</li>
+          <li>Parents or guardians remain present</li>
+          <li>Gear and level listed upfront</li>
+          <li>Premium seasonal drops priced separately</li>
+        </ul>
+        <a href="#join" class="button primary full">Join the founding waitlist</a>
+        <p class="pricing-note">Joining the waitlist is free. You will receive the full drop details before deciding or paying.</p>
+      </div>
+    `;
+  }
+
+  const faqItems = document.querySelectorAll(".faq-grid details");
+
+  faqItems.forEach((item) => {
+    const summary = item.querySelector("summary");
+    const answer = item.querySelector("p");
+    const question = summary?.textContent.trim();
+
+    if (question === "Can I join without becoming a member?") {
+      summary.textContent = "Do I need a subscription?";
+      answer.textContent = "No. At launch, every drop is booked and paid separately. Join the waitlist for free and choose only the drops your family wants.";
+    }
+
+    if (question === "What does Founding Parents include?") {
+      summary.textContent = "What does joining the founding waitlist mean?";
+      answer.textContent = "It is free and gives you early access to the first Prague drops. You are not charged until you actively choose and book a specific drop.";
+    }
+  });
+
+  const formNote = document.querySelector("#formNote");
+  if (formNote) {
+    formNote.textContent = "Joining the waitlist is free. No subscription, no recurring charge, and no payment until you choose a specific drop.";
+  }
+};
+
 applyInclusivePositioning();
+applyDropOnlyLaunchModel();
 
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
@@ -135,11 +218,12 @@ form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (note) {
-    note.textContent = "Sending your founding invite request...";
+    note.textContent = "Sending your founding waitlist request...";
   }
 
   const submitButton = form.querySelector('button[type="submit"]');
   const originalButtonText = submitButton?.textContent;
+
   if (submitButton) {
     submitButton.disabled = true;
     submitButton.textContent = "Sending...";
@@ -178,7 +262,7 @@ form?.addEventListener("submit", async (event) => {
     form.reset();
 
     if (note) {
-      note.textContent = "Done. Your request was sent. I’ll follow up with the first Prague drops soon.";
+      note.textContent = "Done. You are on the free founding waitlist. I’ll send the first Prague drop details before any booking or payment.";
     }
 
     if (submitButton) {
