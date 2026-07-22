@@ -131,7 +131,20 @@ document.querySelectorAll(".nav a").forEach((link) => {
 const form = document.querySelector("#waitlistForm");
 const note = document.querySelector("#formNote");
 
-form?.addEventListener("submit", () => {
+form?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (note) {
+    note.textContent = "Sending your founding invite request...";
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton?.textContent;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+  }
+
   const formData = new FormData(form);
   const submission = {
     name: formData.get("name"),
@@ -141,14 +154,44 @@ form?.addEventListener("submit", () => {
     captainMaxCapacity: formData.get("captainMaxCapacity"),
     requiredGear: formData.get("requiredGear"),
     message: formData.get("message"),
+    source: "offscreen-kids-club-vercel",
     createdAt: new Date().toISOString()
   };
 
-  const saved = JSON.parse(localStorage.getItem("offscreenWaitlist") || "[]");
-  saved.push(submission);
-  localStorage.setItem("offscreenWaitlist", JSON.stringify(saved));
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      headers: {
+        Accept: "application/json"
+      },
+      body: formData
+    });
 
-  if (note) {
-    note.textContent = "Sending your founding invite request...";
+    if (!response.ok) {
+      throw new Error("Formspree submission failed");
+    }
+
+    const saved = JSON.parse(localStorage.getItem("offscreenWaitlist") || "[]");
+    saved.push(submission);
+    localStorage.setItem("offscreenWaitlist", JSON.stringify(saved));
+
+    form.reset();
+
+    if (note) {
+      note.textContent = "Done. Your request was sent. I’ll follow up with the first Prague drops soon.";
+    }
+
+    if (submitButton) {
+      submitButton.textContent = "Request sent";
+    }
+  } catch (error) {
+    if (note) {
+      note.textContent = "Something went wrong. Please DM Nico or email nicollanas@gmail.com and I’ll add you manually.";
+    }
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText || "Join waitlist";
+    }
   }
 });
