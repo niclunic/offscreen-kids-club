@@ -153,13 +153,13 @@ const applyDropOnlyLaunchModel = () => {
 
       <div class="pricing-card">
         <p class="plan">Founding Drop Access</p>
-        <h3>From 490 CZK <span>/ family</span></h3>
-        <p class="plan-text">The exact price is always shown before booking.</p>
+        <h3>From 490 CZK <span>/ child</span></h3>
+        <p class="plan-text">One attending parent or guardian is included. The exact price and sibling rules are always shown before booking.</p>
         <ul>
           <li>No subscription or recurring charge</li>
           <li>Pay only for the drops you choose</li>
-          <li>Small, age-aware groups</li>
-          <li>Parents or guardians remain present</li>
+          <li>One participating child per booking place</li>
+          <li>One attending parent or guardian included</li>
           <li>Gear and level listed upfront</li>
           <li>Premium seasonal drops priced separately</li>
         </ul>
